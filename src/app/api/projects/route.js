@@ -3,23 +3,28 @@ import project from "@/models/project";
 import { NextResponse } from "next/server";
 
 
-export async function GET(req, res) {
-try {
- await connectDB();
- const projects = await projects.find();
+export async function GET(res, req) {
+  try {
+    await connectDB();
 
- return NextResponse.json({
-    success: true,
-    data: projects,
- })
-    
-} catch (error) {
-    console.log("Error Fetching Projects");
-   return NextResponse.json({
+ const data = await project.find();
+
+    return NextResponse.json({
+      success: true,
+      data: data,
+    });
+
+  } catch (error) {
+    console.log("Error Fetching Data");
+
+    return NextResponse.json(
+      {
         success: false,
         message: "Server Error",
-    })
-}
+      },
+      { status: 500 }
+    );
+  }
 }
 
 
