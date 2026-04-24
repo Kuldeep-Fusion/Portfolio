@@ -38,3 +38,48 @@ export async function DELETE(req, { params }) {
     );
   }
 }
+
+
+// update contact
+export async function PUT(req, { params }) {
+  try {
+    await connectDB();
+
+    const { id } = await params;
+    const { name, email, message } = await req.json();
+
+    const data = await Contact.findByIdAndUpdate(id);
+
+    if (!data) {
+      return NextResponse.json(
+        { success: false, message: "Contact not found" },
+        { status: 404 }
+      );
+    }
+
+    data.name = name;
+    data.email = email;
+    data.message = message;
+
+    const upContact = await data.save();
+
+    return NextResponse.json(
+      {
+        success: true,
+        data: upContact,
+      },
+      { status: 200 }
+    );
+
+  } catch (error) {
+    console.log("Failed to update contact", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Failed to update",
+      },
+      { status: 500 }
+    );
+  }
+}
