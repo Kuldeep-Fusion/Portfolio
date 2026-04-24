@@ -20,6 +20,18 @@ const Projects = () => {
     }
  }, [])
 
+
+ //delete projects
+ const deleteProjects = async (id) => {
+try {
+    await fetch(`/api/projects/${id}`, {
+        method: "DELETE"
+    }); 
+} catch (error) {
+    console.log("Error Deleting Prjoect", error)
+}
+ }
+
   return (
     <div>
       <Header title={"Projects"}/>
@@ -69,7 +81,7 @@ const Projects = () => {
           Edit
         </button>
 
-        <button className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm">
+        <button onClick={() => deleteProjects(i._id)} className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm">
           Delete
         </button>
       </div>

@@ -27,19 +27,19 @@ const Contact = () => {
 
   if (loading) return <p>Loading...</p>;
 
-  //delete contact
-  const deleteContact = async (id) => {
-    try {
-      const res = await fetch(`/api/contact/${id}` , {
-        method: "DELETE",
-      });
 
-      const data = await res.json();
-      console.log(data)
-    } catch (error) {
-      console.log("Error Deleting", error)
-    }
+  // delete contact
+ const deleteContact = async (id) => {
+  try {
+    await fetch(`/api/contact/${id}`, {
+      method: "DELETE",
+    });
+  } catch (error) {
+    console.log("Error Deleting", error);
   }
+};
+
+
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -84,6 +84,7 @@ const Contact = () => {
                     onClick={() => {
                       onEdit(item);
                       onMarkRead(item.id);
+                      
                     }}
                     className="bg-green-500 hover:bg-green-600 text-white p-2 rounded"
                   >
@@ -91,7 +92,7 @@ const Contact = () => {
                   </button>
 
                   <button
-                    onClick={() => deleteContact(item.id)}
+                    onClick={() => deleteContact(item._id)}
                     className="bg-red-500 hover:bg-red-600 text-white p-2 rounded"
                   >
                     <FaTrash size={14} />
