@@ -83,7 +83,7 @@ export default function Contact() {
                   <FiPhone className="text-lg" />
                 </div>
                 <span className="text-gray-700 text-sm">
-                  +91 9876543210
+                  +91 8810391702
                 </span>
               </div>
 
