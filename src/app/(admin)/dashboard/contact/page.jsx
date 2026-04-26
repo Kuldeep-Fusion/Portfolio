@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Header from "@/app/components/admin/header";
 import { useEffect, useState } from "react"
 import { FaEdit, FaTrash } from "react-icons/fa";
@@ -40,7 +40,6 @@ const Contact = () => {
 };
 
 
-
   return (
     <div className="max-w-6xl mx-auto p-6">
 
@@ -50,7 +49,7 @@ const Contact = () => {
         <table className="w-full text-left border-collapse">
           
           <thead className="bg-gray-100 text-gray-700 text-sm uppercase">
-            <tr>
+            <tr >
               <th className="p-4">Name</th>
               <th className="p-4">Email</th>
               <th className="p-4">Message</th>
@@ -63,7 +62,7 @@ const Contact = () => {
           <tbody>
             {data.map((item) => (
               <tr
-                key={item.id}
+                key={item._id}
                 className={`border-t hover:bg-gray-50 transition ${
                   !item.read ? "bg-blue-50" : ""
                 }`}

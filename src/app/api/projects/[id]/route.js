@@ -53,8 +53,6 @@ if(!data){
         success: false
     }, {status: 404})
 }
-
-
          return NextResponse.json({
             success: true,
             message: "updated projects",
